@@ -1,0 +1,11 @@
+/* src/index.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Add this to your index.css or global CSS file */
+body {
+    background-color: black;
+    /* Optional: Makes text white for better visibility */
+  }
+  
