@@ -3,6 +3,8 @@ import SearchBar from './components/SearchBar';
 import ImageGrid from './components/ImageGrid';
 import ImageModal from './components/ImageModal';
 import { fetchImages } from './api';
+import Loader from './components/Loader';
+import Footer from './components/Footer';
 
 const App = () => {
   const [images, setImages] = useState([]);
@@ -31,12 +33,17 @@ const App = () => {
   }, []);
 
   return (
-    <div className="container mx-auto p-4">
-      
-      <SearchBar onSearch={searchImages} />
+    <>
+     
+     <SearchBar onSearch={searchImages} />
       {error && (
         <div className="text-red-500 text-center my-4">{error}</div>
       )}
+    <div className="container mx-auto p-4 pt-[120px]">
+     
+     <div className='p-3'>
+      <Loader/>
+     </div>
       <ImageGrid 
         images={images} 
         onImageClick={setSelectedImage} 
@@ -47,7 +54,12 @@ const App = () => {
         onClose={() => setSelectedImage(null)} 
         onImageClick={handleImageClick}
       />
+
+      <Loader/>
+
     </div>
+    <Footer/>
+    </>
   );
 };
 
